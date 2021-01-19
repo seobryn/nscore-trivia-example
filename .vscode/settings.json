@@ -1,0 +1,19 @@
+{
+    "NativescriptExtend.fileAssociations": [
+        {
+            "systemId": "/Users/jose.joya/Documents/Projects/Training/trivia-game/schema/tns.xsd",
+            "pattern": "**/**/*.xml"
+        },
+        {
+            "systemId": "http://www.w3.org/2001/XMLSchema.xsd",
+            "pattern": "/Users/jose.joya/Documents/Projects/Training/trivia-game/schema/tns.xsd"
+        }
+    ],
+    "files.exclude": {
+        "schema": true
+    },
+    "NativescriptExtend.format.enabled": true,
+    "NativescriptExtend.validation.enabled": true,
+    "editor.snippetSuggestions": "Bottom",
+    "NativescriptExtend.enable.snippets": true
+}

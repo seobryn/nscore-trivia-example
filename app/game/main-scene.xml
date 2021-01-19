@@ -1,0 +1,15 @@
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true">
+    <FlexboxLayout flexDirection="column" justifyContent="center" class="rootContainer">
+        <StackLayout orientation="horizontal" class="main-container" visibility="{{isGameStarted? 'hidden': 'visible'}}">
+            <Label text="Hola! " alignSelf="center" class="h2 custom-color" />
+            <Label text="{{user_name}}" alignSelf="center" class="h2 custom-color" />
+        </StackLayout>
+        <StackLayout class="main-container" visibility="{{isGameStarted? 'hidden':'visible'}}">
+            <Label text="estas listo para empezar?" alignSelf="center" class="h2 custom-color" />
+        </StackLayout>
+        <Button text="Iniciar Juego" tap="{{startGame}}" visibility="{{!isTimeVisible? 'hidden':'visible'}}" />
+        <FlexboxLayout class="main-container" visibility="{{!isTimeVisible? 'hidden':'visible'}}" justifyContent="center">
+            <Label text="{{time}}" class="h2 custom-color" />
+        </FlexboxLayout>
+    </FlexboxLayout>
+</Page>
