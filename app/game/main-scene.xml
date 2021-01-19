@@ -1,4 +1,4 @@
-<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true">
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" xmlns:lv="nativescript-ui-listview">
     <FlexboxLayout flexDirection="column" justifyContent="{{!isTimeVisible && isGameStarted ? 'flex-start': 'center'}}" class="rootContainer">
         <StackLayout orientation="horizontal" class="main-container" visibility="{{isGameStarted? 'collapse': 'visible'}}">
             <Label text="Hola! " alignSelf="center" class="h2 custom-color" />
@@ -11,24 +11,25 @@
         <FlexboxLayout class="main-container" visibility="{{!isTimeVisible? 'collapse':'visible'}}" justifyContent="center">
             <Label text="{{time}}" class="h2 custom-color" />
         </FlexboxLayout>
-        <StackLayout visibility="{{!isTimeVisible && isGameStarted ? 'visible': 'collapse'}}" orientation="vertical" margin="20dp 0dp" height="100%">
-            <StackLayout orientation="horizontal" width="100%">
+        <StackLayout visibility="{{!isTimeVisible && isGameStarted ? 'visible': 'collapse'}}" orientation="vertical" margin="20dp 0dp">
+            <StackLayout orientation="horizontal" marginLeft="20dp">
+                <Label text="Intentos: " class="h2 custom-color" />
+                <Label text="{{tries}}" class="h2 custom-color" />
+            </StackLayout>
+            <StackLayout orientation="horizontal" marginLeft="20dp" marginRight="20dp">
                 <Label text="Pregunta #" class="h3 custom-color" />
                 <Label text="{{questionCount+1}}" class="h3 custom-color" />
                 <Label text=":" class="h3 custom-color" />
             </StackLayout>
             <StackLayout orientation="vertical" width="100%">
-                <Label text="{{questions questionsCount, questions[questionCount].question}}" class="h2 custom-color" textWrap="true" height="100%" />
-                <ScrollView height="100%" width="100%">
-                    <Repeater items="{{ answers }}" id="repeater">
-                        <Repeater.itemsLayout>
-                            <StackLayout orientation="horizontal" />
-                        </Repeater.itemsLayout>
-                        <Repeater.itemTemplate>
+                <Label text="{{questions questionsCount, questions[questionCount].question}}" class="h2 custom-color" textWrap="true" marginLeft="20dp" marginRight="20dp" />
+                <ListView items="{{ answers }}" id="listView" itemTap="{{answer}}" height="600dp">
+                    <ListView.itemTemplate>
+                        <StackLayout orientation="horizontal">
                             <Label text="{{ $value }}" margin="10" />
-                        </Repeater.itemTemplate>
-                    </Repeater>
-                </ScrollView>
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
             </StackLayout>
         </StackLayout>
     </FlexboxLayout>
