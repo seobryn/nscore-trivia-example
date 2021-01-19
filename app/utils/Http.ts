@@ -8,6 +8,6 @@ export default class HttpClient {
 
     async getRandonQuestions(){
         const { data } = await axios.get(`${this.baseUrl}`);
-        return data;
+        return data.results;
     }
 }

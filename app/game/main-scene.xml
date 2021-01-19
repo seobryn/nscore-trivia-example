@@ -1,15 +1,35 @@
 <Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true">
-    <FlexboxLayout flexDirection="column" justifyContent="center" class="rootContainer">
-        <StackLayout orientation="horizontal" class="main-container" visibility="{{isGameStarted? 'hidden': 'visible'}}">
+    <FlexboxLayout flexDirection="column" justifyContent="{{!isTimeVisible && isGameStarted ? 'flex-start': 'center'}}" class="rootContainer">
+        <StackLayout orientation="horizontal" class="main-container" visibility="{{isGameStarted? 'collapse': 'visible'}}">
             <Label text="Hola! " alignSelf="center" class="h2 custom-color" />
             <Label text="{{user_name}}" alignSelf="center" class="h2 custom-color" />
         </StackLayout>
-        <StackLayout class="main-container" visibility="{{isGameStarted? 'hidden':'visible'}}">
+        <StackLayout class="main-container" visibility="{{isGameStarted? 'collapse':'visible'}}">
             <Label text="estas listo para empezar?" alignSelf="center" class="h2 custom-color" />
         </StackLayout>
-        <Button text="Iniciar Juego" tap="{{startGame}}" visibility="{{!isTimeVisible? 'hidden':'visible'}}" />
-        <FlexboxLayout class="main-container" visibility="{{!isTimeVisible? 'hidden':'visible'}}" justifyContent="center">
+        <Button text="Iniciar Juego" tap="{{startGame}}" visibility="{{isGameStarted? 'collapse':'visible'}}" />
+        <FlexboxLayout class="main-container" visibility="{{!isTimeVisible? 'collapse':'visible'}}" justifyContent="center">
             <Label text="{{time}}" class="h2 custom-color" />
         </FlexboxLayout>
+        <StackLayout visibility="{{!isTimeVisible && isGameStarted ? 'visible': 'collapse'}}" orientation="vertical" margin="20dp 0dp" height="100%">
+            <StackLayout orientation="horizontal" width="100%">
+                <Label text="Pregunta #" class="h3 custom-color" />
+                <Label text="{{questionCount+1}}" class="h3 custom-color" />
+                <Label text=":" class="h3 custom-color" />
+            </StackLayout>
+            <StackLayout orientation="vertical" width="100%">
+                <Label text="{{questions questionsCount, questions[questionCount].question}}" class="h2 custom-color" textWrap="true" height="100%" />
+                <ScrollView height="100%" width="100%">
+                    <Repeater items="{{ answers }}" id="repeater">
+                        <Repeater.itemsLayout>
+                            <StackLayout orientation="horizontal" />
+                        </Repeater.itemsLayout>
+                        <Repeater.itemTemplate>
+                            <Label text="{{ $value }}" margin="10" />
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
     </FlexboxLayout>
 </Page>

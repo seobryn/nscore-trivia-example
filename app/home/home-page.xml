@@ -2,6 +2,6 @@
     <FlexboxLayout flexDirection="column" justifyContent="center" class="rootContainer">
         <Label text="Trivia Game" class="h2 custom-color" alignSelf="center" />
         <TextField hint="Ingrese su nombre" class="-primary custom-color" text="{{name}}" />
-        <Button tap="{{register}}" text="Registrarse" />
+        <Button tap="{{name?register:null}}" text="Registrarse" />
     </FlexboxLayout>
 </Page>
