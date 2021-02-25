@@ -1,4 +1,3 @@
-import * as http from 'http';
 import axios from 'axios';
 
 export default class HttpClient {
